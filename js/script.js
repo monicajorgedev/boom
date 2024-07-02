@@ -1,4 +1,5 @@
 
+//mi codigo
 const result = document.getElementById("result")
 const userInput = document.getElementById("userInput")
 const btnRestart = document.getElementById("restart")
@@ -15,7 +16,7 @@ userInput.addEventListener("input", ()=>{
     numberPC = numberRandom(1,3)
 
 //promesa que hace la cuenta atrás y con el then compara los números e introduce el resultado en el DOM
-    const resultPromise = new Promise ((resolve, reject)=> {
+    const resultPromise = new Promise ((resolve)=> {
         let timeLeft= 5;
         //función actualiza cuenta atrás
         const updateCountdown = ()=> {
@@ -55,3 +56,53 @@ btnRestart.addEventListener("click", ()=> {
 
 
 
+/*
+//codigo clase
+const userInput = document.getElementById("userInput"),
+     countdown = document.getElementById("countdown"),
+     result = document.getElementById("result"),
+     restart = document.getElementById("restart")
+
+
+let timeLeft = 5
+let userNumber =  0
+
+
+const updateCountdown = () => {
+  setInterval(() => {
+   if (timeLeft >= 0) {
+     countdown.textContent = `cuenta atrás: ${timeLeft} segundos`
+   }
+   timeLeft--
+ }, 1000)
+}
+
+
+userInput.addEventListener("change", ()=> {
+ userNumber = parseInt(userInput.value) || 0
+  console.log("este es el valor", userInput.value)
+})
+
+
+const getNumber = () => {
+ updateCountdown()
+ new Promise(resolve => {
+   setTimeout(() => {
+    
+     const randomNumber = Math.floor(Math.random() * 3) + 1
+     const win = `
+         <h2>¡Has salvado el mundo!</h2>
+         <p>Tu número elegido ${userNumber} es el mismo que ${randomNumber}</p>
+       `
+     const lose = `
+         <h2>¡Ha explotado la bomba!</h2>
+         <p>Tu número elegido ${userNumber} NO es el mismo que ${randomNumber}</p>
+       `
+     randomNumber === userNumber ? resolve(win) : resolve(lose)
+   }, 6000)
+ }).then(data => result.innerHTML = data)
+ }
+
+getNumber()
+
+*/
